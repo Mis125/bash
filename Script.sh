@@ -8,12 +8,9 @@ for web in $(ifconfig | cut -d ' ' -f1 | tr ':' '\n' | awk NF); do
 done
 
 
-for inter in ${interfaces[@]}
-do
+for inter in ${interfaces[@]}; do
 echo $inter
 echo "Status:  $(cat /sys/class/net/$inter/operstate)"
 echo "MAC: $(cat /sys/class/net/$inter/address)"
 echo "IP: $(hostname -I)"
-
-
 done
